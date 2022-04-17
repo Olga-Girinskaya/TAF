@@ -9,5 +9,8 @@
         <module name="TAF" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="TAF" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
