@@ -29,7 +29,7 @@ public class SmokeTest2 {
         WebElement age = driver.findElement(By.id("oAge"));
         WebElement weight = driver.findElement(By.id("oWeight"));
         WebElement height = driver.findElement(By.id("oHeight"));
-        WebElement button = driver.findElement(By.xpath("//*[@id=\"Form1\"]/ul/li[6]/input[1]"));
+        WebElement button = driver.findElement(By.xpath("//input[@value = 'Рассчитать']"));
 
         cr.sendKeys("80");
         age.sendKeys("38");
