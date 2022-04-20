@@ -27,14 +27,14 @@ public class SmokeTest {
         button.click();
         Thread.sleep(5000);
         WebElement result = driver.findElement(By.id("imt-result"));
-        Assert.assertEquals(result.getText(),"17.3 - Недостаточная (дефицит) масса тела");
+        Assert.assertEquals(result.getText(), "17.3 - Недостаточная (дефицит) масса тела");
     }
 
     @Test
     public void validateSKF() throws InterruptedException {
         driver.get("http://13gp.by/informatsiya/meditsinskie-kalkulyatory/995-raschet-skorosti-klubochkovoj-filtratsii-skf");
         WebElement selectWebElement = driver.findElement(By.id("oSex"));
-        Select selectSex= new Select(selectWebElement);
+        Select selectSex = new Select(selectWebElement);
         selectSex.selectByIndex(1);
         Thread.sleep(2000);
         selectSex.selectByValue("0");
