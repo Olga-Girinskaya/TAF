@@ -28,7 +28,7 @@ public class BrowserService {
 
     public WebDriver getDriver() {
         driver.manage().window().maximize(); //отобразить на весь экран
-        driver.manage().deleteAllCookies(); // удавиь все куки
+        driver.manage().deleteAllCookies(); // удалить все куки
         return this.driver;
     }
 
@@ -39,7 +39,7 @@ public class BrowserService {
         //chromeOptions.addArguments("--window-size=1920,1200"); // задаетс расширение экрана
         chromeOptions.addArguments("--ignore-certificate-errors"); // игнорирует ошибки сертификата
         chromeOptions.addArguments("--silent"); // браузер не будет задаать лишних вопросов
-       // chromeOptions.addArguments("--start-maximized"); // развернет браузер на весь экран
+        chromeOptions.addArguments("--start-maximized"); // развернет браузер на весь экран
         // chromeOptions.addArguments("--incognito"); // запуск  браузера инкогнито
 
         return chromeOptions;

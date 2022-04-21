@@ -25,10 +25,7 @@ public class SmokeTest4 {
         WebElement wightRoom = driver.findElement(By.id("wd_room_id"));
         WebElement lengthPanel = driver.findElement(By.id("ln_lam_id"));
         WebElement wightPanel = driver.findElement(By.id("wd_lam_id"));
-        WebElement countPanel = driver.findElement(By.id("n_packing"));
         WebElement metod = driver.findElement(By.cssSelector("#laying_method_laminate > option:nth-child(1)"));
-        WebElement indent = driver.findElement(By.id("indent_walls_id"));
-        WebElement direction = driver.findElement(By.id("direction-laminate-id1"));
         WebElement result = driver.findElement(By.cssSelector(".calc-btn-div>.calc-btn"));
 
 
@@ -40,9 +37,10 @@ public class SmokeTest4 {
         lengthPanel.sendKeys("2000");
         wightPanel.clear();
         wightPanel.sendKeys("200");
-
+        metod.click();
+       // ((JavascriptExecutor) driver).executeScript("scroll(0,400)");
         result.click();
-        ((JavascriptExecutor) driver).executeScript("scroll(0,100)");
+
 
         WebElement countBoard = driver.findElement(By.cssSelector(".calc-result > div:nth-child(1)"));
         Assert.assertEquals(countBoard.getText(), "53");
