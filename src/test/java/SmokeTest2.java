@@ -17,7 +17,7 @@ public class SmokeTest2 {
     }
 
     @Test
-    public void validateSKF() throws InterruptedException {
+    public void validateSKF() {
         driver.get("http://13gp.by/informatsiya/meditsinskie-kalkulyatory/995-raschet-skorosti-klubochkovoj-filtratsii-skf");
         WebElement selectWebElement = driver.findElement(By.id("oSex"));
         Select selectSex = new Select(selectWebElement);
@@ -35,7 +35,7 @@ public class SmokeTest2 {
         age.sendKeys("38");
         weight.sendKeys("55");
         height.sendKeys("163");
-      //  Thread.sleep(2000);
+        //  Thread.sleep(2000);
         button.click();
         WebElement resultMDRD = driver.findElement(By.id("txtMDRD"));
         Assert.assertEquals(resultMDRD.getText(), "MDRD: 74 (мл/мин/1,73кв.м)");

@@ -2,7 +2,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -34,16 +33,15 @@ public class SmokeTest3 {
         type.click();
         WebElement button = driver.findElement(By.xpath("//input[@class = 'buttHFcalc']"));
 
-        JavascriptExecutor js = ((JavascriptExecutor) driver);
-        ((JavascriptExecutor)driver).executeScript("scroll(0,400)");
+        ((JavascriptExecutor) driver).executeScript("scroll(0,400)");
 
         button.click();
         Thread.sleep(5000);
 
-        WebElement power = driver.findElement(By.id("#floor_cable_power"));
-        Assert.assertEquals(power.getText(), "31601");
-        WebElement powerDensity = driver.findElement(By.id("#spec_floor_cable_power"));
-        Assert.assertEquals(powerDensity.getText(), "1300");
+        WebElement power = driver.findElement(By.id("floor_cable_power"));
+        Assert.assertEquals(power.getAttribute("value"), "31601");
+        WebElement powerDensity = driver.findElement(By.id("spec_floor_cable_power"));
+        Assert.assertEquals(powerDensity.getAttribute("value"), "1300");
 
         Thread.sleep(10000);
     }
