@@ -35,8 +35,8 @@ public class SmokeTest2 {
         age.sendKeys("38");
         weight.sendKeys("55");
         height.sendKeys("163");
-        //  Thread.sleep(2000);
         button.click();
+        //  Thread.sleep(2000);
         WebElement resultMDRD = driver.findElement(By.id("txtMDRD"));
         Assert.assertEquals(resultMDRD.getText(), "MDRD: 74 (мл/мин/1,73кв.м)");
         WebElement resultMDRD1 = driver.findElement(By.id("txtMDRD1"));
@@ -45,7 +45,6 @@ public class SmokeTest2 {
         Assert.assertEquals(resultCG.getText(), "Cockroft-Gault: 70 (мл/мин)");
         WebElement resultBSA = driver.findElement(By.id("txtBSA"));
         Assert.assertEquals(resultBSA.getText(), "Поверхность тела:1.58 (кв.м)");
-
     }
 
     @AfterMethod
