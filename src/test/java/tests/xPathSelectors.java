@@ -25,7 +25,7 @@ public class xPathSelectors {
 
     @Test
     public void basicXPathSelectors() {
-        driver.get("https://aqa18.testrail.io/index.php?/auth/login/");
+        driver.get(ReadProperties.getUrl());
         //Все элементы на сранице начиная с html
 
         //Аналог поиска по tagName
@@ -71,7 +71,7 @@ Assert.assertTrue(driver.findElement(By.xpath("//*[contains(text(),'All Projects
     }
 
     public void axesXPathTest(){
-        driver.get("https://aqa18.testrail.io/index.php?/auth/login/");
+        driver.get(ReadProperties.getUrl());
 
         //поиск родителя у элемента с тэгом h1
         Assert.assertTrue(driver.findElement(By.xpath("//h1/..")).isDisplayed());
