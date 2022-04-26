@@ -27,8 +27,8 @@ public class BrowserService {
     }
 
     public WebDriver getDriver() {
-        driver.manage().window().maximize(); //отобразить на весь экран
-        driver.manage().deleteAllCookies(); // удавиь все куки
+        driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
         return this.driver;
     }
 
