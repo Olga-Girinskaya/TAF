@@ -21,9 +21,7 @@ public class SmokeTest2 {
         driver.get("http://13gp.by/informatsiya/meditsinskie-kalkulyatory/995-raschet-skorosti-klubochkovoj-filtratsii-skf");
         WebElement selectWebElement = driver.findElement(By.id("oSex"));
         Select selectSex = new Select(selectWebElement);
-        //selectSex.selectByIndex(1);
         selectSex.selectByValue("1");
-        // selectSex.selectByVisibleText("женский");
 
         WebElement cr = driver.findElement(By.id("oCr"));
         WebElement age = driver.findElement(By.id("oAge"));
@@ -36,7 +34,7 @@ public class SmokeTest2 {
         weight.sendKeys("55");
         height.sendKeys("163");
         button.click();
-        //  Thread.sleep(2000);
+
         WebElement resultMDRD = driver.findElement(By.id("txtMDRD"));
         Assert.assertEquals(resultMDRD.getText(), "MDRD: 74 (мл/мин/1,73кв.м)");
         WebElement resultMDRD1 = driver.findElement(By.id("txtMDRD1"));

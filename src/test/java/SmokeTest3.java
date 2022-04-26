@@ -31,8 +31,8 @@ public class SmokeTest3 {
         lossHeat.sendKeys("30096");
         room.click();
         type.click();
-        WebElement button = driver.findElement(By.xpath("//input[@class = 'buttHFcalc']"));
 
+        WebElement button = driver.findElement(By.xpath("//input[@class = 'buttHFcalc']"));
         ((JavascriptExecutor) driver).executeScript("scroll(0,400)");
         Thread.sleep(2000);
         button.click();
@@ -41,8 +41,6 @@ public class SmokeTest3 {
         Assert.assertEquals(power.getAttribute("value"), "31601");
         WebElement powerDensity = driver.findElement(By.id("spec_floor_cable_power"));
         Assert.assertEquals(powerDensity.getAttribute("value"), "1300");
-
-        //Thread.sleep(2000);
     }
 
     @AfterMethod

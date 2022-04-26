@@ -1,7 +1,7 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -24,7 +24,7 @@ public class SmokeTest4 {
         WebElement wightRoom = driver.findElement(By.id("wd_room_id"));
         WebElement lengthPanel = driver.findElement(By.id("ln_lam_id"));
         WebElement wightPanel = driver.findElement(By.id("wd_lam_id"));
-        WebElement metodLaminate = driver.findElement(By.id("direction-laminate-id1"));
+        WebElement methodLaminate = driver.findElement(By.id("direction-laminate-id1"));
 
         lengthRoom.clear();
         lengthRoom.sendKeys("500");
@@ -34,19 +34,19 @@ public class SmokeTest4 {
         lengthPanel.sendKeys("2000");
         wightPanel.clear();
         wightPanel.sendKeys("200");
-        metodLaminate.click();
-        Thread.sleep(5000);
+        WebElement layingMethodLaminate = driver.findElement(By.id("laying_method_laminate"));
+        Select selectMethod = new Select(layingMethodLaminate);
+        selectMethod.selectByValue("2");
+        methodLaminate.click();
+
         WebElement result = driver.findElement(By.cssSelector(".calc-btn-div>.calc-btn"));
         result.click();
-        //  ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);"); // скролл до конца страницы
-        //  ((JavascriptExecutor) driver).executeScript("arguments [0].scrollIntoView();", result); // скрол элемена result
-        ((JavascriptExecutor) driver).executeScript("scroll(0,400)");
+
         Thread.sleep(2000);
         WebElement countBoard = driver.findElement(By.cssSelector(".calc-result>div:nth-child(1)"));
         Assert.assertEquals(countBoard.getText(), "Требуемое количество досок ламината: 53");
         WebElement countPackages = driver.findElement(By.cssSelector(".calc-result>div:nth-child(2)"));
         Assert.assertEquals(countPackages.getText(), "Количество упаковок ламината: 7");
-        // Thread.sleep(2000);
     }
 
     @AfterMethod
