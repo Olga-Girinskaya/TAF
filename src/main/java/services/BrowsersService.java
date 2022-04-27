@@ -9,11 +9,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.Locale;
 
-public class BrowserService {
+public class BrowsersService {
     private WebDriver driver = null;
     private DriverManagerType driverManagerType = null;
 
-    public BrowserService() {
+    public BrowsersService() {
         switch (ReadProperties.browserName().toLowerCase(Locale.ROOT)) {
             case "chrome":
                 driverManagerType = DriverManagerType.CHROME;
