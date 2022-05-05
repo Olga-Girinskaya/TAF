@@ -6,8 +6,6 @@ public class TestDouble extends BaseTest {
 
     protected Calculator calculator = new Calculator(Calculator.class.toString());
 
-    // protected Calculator calculator = new Calculator("Test calculator");
-
     @Test(testName = "Деление double числа (testName)", priority = 1)
     public void testDivDouble1() {
         Assert.assertEquals(calculator.div(4.5, 3), 1.5, "Неверный ответ....");

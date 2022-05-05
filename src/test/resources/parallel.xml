@@ -3,14 +3,14 @@
 <suite name="Main Suite" thread-count="2">
 <test name="Smoke">
     <classes>
-        <class name="CalcTest"></class>
-        <class name="DependencyTest"></class>
+        <class name="TestDouble"></class>
+        <class name="TestInt"></class>
     </classes>
 </test>
 <test name="Regression">
     <classes>
-       <class name="PriorityTest"></class>
-       <class name="CalcTest"></class>
+       <class name="TestDouble"></class>
+       <class name="TestInt"></class>
     </classes>
 </test>
 </suite>

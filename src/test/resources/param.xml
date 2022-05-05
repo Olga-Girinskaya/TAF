@@ -5,7 +5,7 @@
     <parameter name="psw-value" value="123123"></parameter>
     <test name="Group Test">
         <classes>
-            <class name="ParamTest"></class>
+            <class name="TestDouble"></class>
         </classes>
     </test>
 </suite>
