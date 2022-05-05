@@ -16,13 +16,13 @@ public class TestDouble extends BaseTest {
         Assert.assertEquals(calculator.div(12.5, 0), Double.POSITIVE_INFINITY, "Результат деления дробных чисел на '0' неверен");
     }
 
-    @Test(timeOut = 2000, dependsOnMethods = "testDivisionDoublePriority")
+    @Test(timeOut = 2000, dependsOnMethods = "testDivisionDoubleWithPriority")
     public void testDivisionDoubleWithTimeout() {
         Assert.assertEquals(calculator.div(4.5, 3), 1.5, "Результат деления дробных чисел неверен");
     }
 
     @Test(description = "Деление double числа (description)", priority = 2)
-    public void testDivisionDoublePriority() {
+    public void testDivisionDoubleWithPriority() {
         Assert.assertEquals(calculator.div(4.5, 3), 1.5, "Результат деления дробных чисел неверен");
     }
 
@@ -32,13 +32,13 @@ public class TestDouble extends BaseTest {
     }
 
     @Test(invocationCount = 3, invocationTimeOut = 2000, threadPoolSize = 3)
-    public void testInvocationCount() throws InterruptedException {
+    public void testDivisionDoubleWithInvocationCount() throws InterruptedException {
         Thread.sleep(500);
         Assert.assertEquals(calculator.div(4.5, 3), 1.5, "Результат деления дробных чисел неверен");
     }
 
     @Test(testName = "dataProvider", dataProvider = "Double", dataProviderClass = StaticProvider.class)
-    public void testDataProvider(double a, double b, double expectedResult) {
+    public void testDivisionDoubleWithDataProvider(double a, double b, double expectedResult) {
         Assert.assertEquals(calculator.div(a, b), expectedResult, "Результат деления дробных чисел неверен");
     }
 }

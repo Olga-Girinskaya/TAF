@@ -32,13 +32,13 @@ public class TestInt extends BaseTest {
     }
 
     @Test(invocationCount = 3, invocationTimeOut = 2000, threadPoolSize = 3)
-    public void testInvocationCount() throws InterruptedException {
+    public void testDivisionIntWithInvocationCount() throws InterruptedException {
         Thread.sleep(500);
         Assert.assertEquals(calculator.div(6, 2), 3, "Результат деления целых чисел неверен");
     }
 
     @Test(testName = "dataProvider", dataProvider = "dataForDivIntTest", dataProviderClass = StaticProvider.class)
-    public void testDataProvider(int a, int b, int expectedResult) {
+    public void testDivisionIntWithDataProvider(int a, int b, int expectedResult) {
         Assert.assertEquals(calculator.div(a, b), expectedResult, "Результат деления целых чисел неверен");
     }
 }
