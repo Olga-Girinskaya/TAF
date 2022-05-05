@@ -1,8 +1,7 @@
-import org.testng.annotations.*;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
-
-    protected Calculator calculator = new Calculator("тестовый калькулятор");
 
     @BeforeTest
     public void beforeTest() {
@@ -13,6 +12,5 @@ public class BaseTest {
     public void afterTest() {
         System.out.println("AfterTest: ...");
     }
-
 
 }
