@@ -33,8 +33,6 @@ public class BrowsersService {
     public WebDriver getDriver() {
         driver.manage().window().maximize(); //отобразить на весь экран
         driver.manage().deleteAllCookies(); // удалить все куки
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(50));
         return this.driver;
     }
 
