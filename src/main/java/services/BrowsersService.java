@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.time.Duration;
 import java.util.Locale;
 
 public class BrowsersService {
@@ -31,7 +32,9 @@ public class BrowsersService {
 
     public WebDriver getDriver() {
         driver.manage().window().maximize(); //отобразить на весь экран
-        driver.manage().deleteAllCookies(); // удавиь все куки
+        driver.manage().deleteAllCookies(); // удалить все куки
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(50));
         return this.driver;
     }
 
