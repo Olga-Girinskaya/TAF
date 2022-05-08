@@ -26,12 +26,16 @@ public class LoginPage extends BasePage {
     public WebElement getEmailInput() {
         return driver.findElement(emailInputLocator);
     }
+
     public WebElement getPswInput() {
         return driver.findElement(pswInputLocator);
     }
+
     public WebElement getLogInButton() {
         return driver.findElement(logInButtonLocator);
     }
-    public WebElement getErrorTextElement() { return driver.findElement(errorTextLocator);
+
+    public WebElement getErrorTextElement() {
+        return driver.findElement(errorTextLocator);
     }
 }

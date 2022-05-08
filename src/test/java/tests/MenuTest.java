@@ -4,7 +4,6 @@ import baseEntities.BaseTest;
 import configuration.ReadProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.ProjectsPage;
 
 public class MenuTest extends BaseTest {
 
@@ -12,7 +11,7 @@ public class MenuTest extends BaseTest {
     public void validate_Dashboard_Menu_Test() {
         Assert.assertTrue(
                 loginStep.successLogin(ReadProperties.username(), ReadProperties.password())
-                .topMenuPage.isPageOpened());
+                        .topMenuPage.isPageOpened());
     }
 
     @Test
@@ -20,4 +19,5 @@ public class MenuTest extends BaseTest {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         Assert.assertTrue(navigationStep.navigateToProjectsPage().sideMenuPage.isPageOpened());
     }
+
 }
