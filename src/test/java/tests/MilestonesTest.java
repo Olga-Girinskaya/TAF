@@ -6,8 +6,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
 public class MilestonesTest extends BaseTest {
 
     @Test
