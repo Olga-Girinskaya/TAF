@@ -13,7 +13,7 @@ import java.util.List;
 public class ActionsTest extends BaseTest {
 
     @Test
-    public void hoverTest() throws InterruptedException {
+    public void hoverTest(){
         driver.get("http://the-internet.herokuapp.com/hovers");
 
         Actions actions = new Actions(driver);
@@ -23,8 +23,8 @@ public class ActionsTest extends BaseTest {
         actions
                 .moveToElement(targetElements.get(0), 10, 10)
                 .click(wait.waitForExists(By.cssSelector("[href='/users/1']")))
-                .build()
-                .perform();
+                .build()  // патерн билдер - всегда должно быть (создает объект на основании  предыдущих параметров)
+                .perform();  // всегда должно быть (начинаем выполнять созданный билдером объект)
     }
 
     @Test
@@ -34,7 +34,8 @@ public class ActionsTest extends BaseTest {
         WaitsService wait = new WaitsService(driver, Duration.ofSeconds(10));
 
         WebElement fileUploadPath = wait.waitForExists(By.id("file-upload"));
-        String pathToFile = ActionsTest.class.getClassLoader().getResource("download.jpeg").getPath();
+        // Добавляется / , поэтому обрезала первый символ
+        String pathToFile = ActionsTest.class.getClassLoader().getResource("download.jpeg").getPath().substring(1);
         System.out.println(pathToFile);
         fileUploadPath.sendKeys(pathToFile);
         wait.waitForExists(By.id("file-submit")).submit();
