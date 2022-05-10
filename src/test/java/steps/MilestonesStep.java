@@ -2,7 +2,6 @@ package steps;
 
 import baseEntities.BaseStep;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pages.MilestonesPage;
 import pages.SideMenuPage;
 
@@ -64,22 +63,4 @@ public class MilestonesStep extends BaseStep {
         milestonesPage.getDateEndMilestone().sendKeys(date);
         milestonesPage.getSaveButtonLocator().click();
     }
-
-    // ? не получилось из Test обратиться к этим методам в Page, поэтому продублировала методы
-    public WebElement getNameMilestone() {
-        return driver.findElement(milestonesPage.nameMilestone);
-    }
-
-    public WebElement getReferencesMilestone() {
-        return driver.findElement(milestonesPage.referencesMilestone);
-    }
-
-    public WebElement getDateEndMilestone() {
-        return driver.findElement(milestonesPage.dateEndMilestone);
-    }
-
-    public WebElement getDescriptionEditor() {
-        return driver.findElement(milestonesPage.descriptionEditor);
-    }
-
 }
