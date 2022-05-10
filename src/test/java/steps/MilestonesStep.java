@@ -1,18 +1,24 @@
 package steps;
 
 import baseEntities.BaseStep;
+import configuration.ReadProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pages.MilestonesPage;
 import pages.SideMenuPage;
+import services.WaitsService;
+
+import java.time.Duration;
 
 public class MilestonesStep extends BaseStep {
     public SideMenuPage sideMenuPage;
+    private WaitsService waitsService =new WaitsService(driver, Duration.ofSeconds(ReadProperties.timeout()));;
 
     public String name = "Test_Milestone";
     public String reference = "Test references";
     public String description = "Test description";
     public String date = "12/15/2021";
+
 
     public MilestonesStep(WebDriver driver) {
         super(driver);
@@ -67,19 +73,19 @@ public class MilestonesStep extends BaseStep {
 
     // ? не получилось из Test обратиться к этим методам в Page, поэтому продублировала методы
     public WebElement getNameMilestone() {
-        return driver.findElement(milestonesPage.nameMilestone);
+        return waitsService.waitForExists(milestonesPage.nameMilestone);
     }
 
     public WebElement getReferencesMilestone() {
-        return driver.findElement(milestonesPage.referencesMilestone);
+        return waitsService.waitForExists(milestonesPage.referencesMilestone);
     }
 
     public WebElement getDateEndMilestone() {
-        return driver.findElement(milestonesPage.dateEndMilestone);
+        return waitsService.waitForExists(milestonesPage.dateEndMilestone);
     }
 
     public WebElement getDescriptionEditor() {
-        return driver.findElement(milestonesPage.descriptionEditor);
+        return waitsService.waitForExists(milestonesPage.descriptionEditor);
     }
 
 }

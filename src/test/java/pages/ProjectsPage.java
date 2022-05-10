@@ -30,7 +30,7 @@ public class ProjectsPage extends BasePage {
     }
 
     public WebElement getNavigationTitleMilestones(String tabName) {
-        return driver.findElement(By.xpath(tabLocator.replace("Replace", tabName)));
+        return waitsService.waitForExists(By.xpath(tabLocator.replace("Replace", tabName)));
     }
 
 }

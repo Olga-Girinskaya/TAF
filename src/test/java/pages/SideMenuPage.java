@@ -19,6 +19,6 @@ public class SideMenuPage extends BasePage {
     }
 
     public WebElement getAddMilestonesButtonLocator() {
-        return driver.findElement(addMilestonesButtonLocator);
+        return waitsService.waitForExists(addMilestonesButtonLocator);
     }
 }

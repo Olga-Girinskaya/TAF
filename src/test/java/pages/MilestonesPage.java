@@ -34,55 +34,55 @@ public class MilestonesPage extends BasePage {
 
     // Блок атомарных методов
     public WebElement getNameInputLocator() {
-        return driver.findElement(nameInputLocator);
+        return waitsService.waitForExists(nameInputLocator);
     }
 
     public WebElement getSaveButtonLocator() {
-        return driver.findElement(saveButtonLocator);
+        return waitsService.waitForExists(saveButtonLocator);
     }
 
     public WebElement getNameMilestone() {
-        return driver.findElement(nameMilestone);
+        return waitsService.waitForExists(nameMilestone);
     }
 
     public WebElement getEditMilestone() {
-        return driver.findElement(editMilestone);
+        return waitsService.waitForExists(editMilestone);
     }
 
     public WebElement getReferencesMilestone() {
-        return driver.findElement(referencesMilestone);
+        return waitsService.waitForExists(referencesMilestone);
     }
 
     public WebElement getDateStartMilestone(){
-        return driver.findElement(dateStartMilestone);
+        return waitsService.waitForExists(dateStartMilestone);
     }
 
     public WebElement getDateEndMilestone() {
-        return driver.findElement(dateEndMilestone);
+        return waitsService.waitForExists(dateEndMilestone);
     }
 
     public WebElement getCheckboxDeleteMilestone() {
-        return driver.findElement(checkboxDeleteMilestone);
+        return waitsService.waitForExists(checkboxDeleteMilestone);
     }
 
     public WebElement getButtonCancelMilestone() {
-        return driver.findElement(buttonCancelMilestone);
+        return waitsService.waitForExists(buttonCancelMilestone);
     }
 
     public WebElement getDeleteMilestone() {
-        return driver.findElement(deleteMilestone);
+        return waitsService.waitForExists(deleteMilestone);
     }
 
     public WebElement getConfirmCheck() {
-        return driver.findElement(confirmCheck);
+        return waitsService.waitForExists(confirmCheck);
     }
 
     public WebElement getDeleteCheck() {
-        return driver.findElement(deleteCheck);
+        return waitsService.waitForExists(deleteCheck);
     }
 
     public WebElement getDescriptionEditor(){
-        return driver.findElement(descriptionEditor);
+        return waitsService.waitForExists(descriptionEditor);
     }
 
 }
