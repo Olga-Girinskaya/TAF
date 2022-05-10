@@ -15,11 +15,8 @@ public class BaseTest {
     protected LoginStep loginStep;
     protected NavigationStep navigationStep;
     protected MilestonesStep milestonesStep;
-
     protected MilestonesPage milestonesPage;
-    protected MilestonesPage referencesMilestone;
-    protected MilestonesPage getDateEndMilestone;
-    protected MilestonesPage getDescriptionEditor;
+
 
     @BeforeMethod
     public void setup() {
