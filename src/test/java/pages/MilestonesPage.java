@@ -53,7 +53,7 @@ public class MilestonesPage extends BasePage {
         return waitsService.waitForExists(referencesMilestone);
     }
 
-    public WebElement getDateStartMilestone(){
+    public WebElement getDateStartMilestone() {
         return waitsService.waitForExists(dateStartMilestone);
     }
 
@@ -81,7 +81,7 @@ public class MilestonesPage extends BasePage {
         return waitsService.waitForExists(deleteCheck);
     }
 
-    public WebElement getDescriptionEditor(){
+    public WebElement getDescriptionEditor() {
         return waitsService.waitForExists(descriptionEditor);
     }
 

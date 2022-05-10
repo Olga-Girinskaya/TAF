@@ -33,6 +33,11 @@ public class BrowsersService {
     public WebDriver getDriver() {
         driver.manage().window().maximize(); //отобразить на весь экран
         driver.manage().deleteAllCookies(); // удалить все куки
+        driver.manage().deleteAllCookies();
+        //driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(40));
+        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(60));
         return this.driver;
     }
 
@@ -48,4 +53,5 @@ public class BrowsersService {
 
         return chromeOptions;
     }
+
 }
