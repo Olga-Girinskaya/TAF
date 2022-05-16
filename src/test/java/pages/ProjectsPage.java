@@ -6,7 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ProjectsPage extends BasePage {
-    private final static String pagePath = "/index.php?/projects/overview/8";
+    //страница проекта "ProjectTest_Milestone"
+    private final static String pagePath = "/index.php?/projects/overview/4";
 
     public SideMenuPage sideMenuPage;
 
