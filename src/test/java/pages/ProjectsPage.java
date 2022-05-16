@@ -3,13 +3,17 @@ package pages;
 import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class ProjectsPage extends BasePage {
-    private final static String pagePath = "/index.php?/admin/projects/overview";
+    //страница проекта "ProjectTest_Milestone"
+    private final static String pagePath = "/index.php?/projects/overview/4";
 
     public SideMenuPage sideMenuPage;
 
-    private By headerTitleLabelLocator = By.xpath("//div[contains(@class, 'content-header-title') and contains(text(), 'Projects')]");
+    private final By headerTitleLabelLocator = By.cssSelector("#navigation-projects");
+    private final String tabLocator = "//li/a[.='Replace']";
+
 
     public ProjectsPage(WebDriver driver) {
         super(driver);
@@ -25,4 +29,9 @@ public class ProjectsPage extends BasePage {
     public void openPageByUrl() {
         super.openPageByUrl(pagePath);
     }
+
+    public WebElement getNavigationTitleMilestones(String tabName) {
+        return waitsService.waitForExists(By.xpath(tabLocator.replace("Replace", tabName)));
+    }
+
 }

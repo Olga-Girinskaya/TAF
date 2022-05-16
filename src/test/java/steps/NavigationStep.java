@@ -14,4 +14,12 @@ public class NavigationStep extends BaseStep {
         projectsPage.openPageByUrl();
         return projectsPage;
     }
+
+    // переход в раздел Milestones
+    public ProjectsPage openMilestonesPage() {
+        projectsPage.getNavigationTitleMilestones("Milestones").click();
+        return projectsPage;
+    }
+
+
 }

@@ -11,8 +11,9 @@ public class DashboardPage extends BasePage {
     public TopMenuPage topMenuPage;
 
     // Блок описания селекторов для элементов
-    private By headerTitleLabelLocator = By.xpath("//div[contains(@class, 'content-header-title') and contains(text(), 'All Projects')]");
+    private final By headerTitleLabelLocator = By.xpath("//div[contains(@class, 'content-header-title') and contains(text(), 'All Projects')]");
 
+    // Блок иницализации
     public DashboardPage(WebDriver driver) {
         super(driver);
 
@@ -30,6 +31,6 @@ public class DashboardPage extends BasePage {
 
     // Блок атомарных методов
     public WebElement getHeaderTitleLabel() {
-        return driver.findElement(headerTitleLabelLocator);
+        return waitsService.waitForExists(headerTitleLabelLocator);
     }
 }

@@ -13,13 +13,11 @@ public class LoginStep extends BaseStep {
 
     public DashboardPage successLogin(String email, String psw) {
         login(email, psw);
-
         return dashboardPage;
     }
 
     public LoginPage incorrectLogin(String email, String psw) {
         login(email, psw);
-
         return loginPage;
     }
 
@@ -30,7 +28,6 @@ public class LoginStep extends BaseStep {
     }
 
     public LoginPage logout() {
-
         return loginPage;
     }
 }
