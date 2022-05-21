@@ -31,29 +31,27 @@ public class ActionsTest extends BaseTest {
     }
 
     //homework
-    //этот тест не работает!
     @Test
-    public void contextMenuTest(){
-        driver.get("http://the-internet.herokuapp.com/context_menu");
+    public void contextMenuTest() {
 
         Actions actions = new Actions(driver);
         WaitsService wait = new WaitsService(driver, Duration.ofSeconds(10));
 
-        WebElement targetElements = wait.waitForVisibilityLocatedBy(By.id("hot-spot"));
+        driver.get("http://the-internet.herokuapp.com/context_menu");
 
         actions
-                .contextClick(targetElements)
-                .pause(2000)
-            //    .click(wait.waitForVisibilityLocatedBy(By.cssSelector("#content > script")))
+                .contextClick(wait.waitForVisibilityLocatedBy(By.id("hot-spot")))
                 .build()
                 .perform();
-        WebElement elementEdit =driver.findElement(By.cssSelector("#content > script"));
-        elementEdit.click();
-        Alert alert=driver.switchTo().alert();
-        Assert.assertEquals(alert.getText(), "You selected a context menu", "Текст алерта неверен");
+
+        Alert alert = driver.switchTo().alert();
+        alert.getText();
+        Assert.assertEquals(alert.getText(), "You selected a context menu", "Текст алерта неверен!");
+        System.out.println("Текст алерта соответствует заданному!");
+        alert.accept();
     }
 
-    // работает
+
     @Test
     public void fileUploadTest() {
         driver.get("http://the-internet.herokuapp.com/upload");
@@ -68,5 +66,17 @@ public class ActionsTest extends BaseTest {
         wait.waitForExists(By.id("file-submit")).submit();
         WebElement nameFile = wait.waitForExists(By.cssSelector("#uploaded-files"));
         Assert.assertEquals(nameFile.getText(), "download.jpeg");
+    }
+
+    //доделать
+    @Test
+    public void dynamicControlsTest() {
+        driver.get("http://the-internet.herokuapp.com/dynamic_controls");
+        WaitsService wait = new WaitsService(driver, Duration.ofSeconds(10));
+
+        wait.waitForExists(By.xpath("//input[@type = 'checkbox']")).click();
+        wait.waitForExists(By.xpath("//button[@onclick = 'swapCheckbox()']")).click();
+        Assert.assertEquals(wait.waitForExists(By.id("message")).getText(), "It's gone!");
+
     }
 }
