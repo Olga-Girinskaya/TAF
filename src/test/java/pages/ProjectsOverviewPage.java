@@ -18,8 +18,8 @@ public class ProjectsOverviewPage extends BasePage {
     }
 
     @Override
-    protected By getPageIdentifier() {
-        return chartTableLocator;
+    protected WebElement getPageIdentifier() {
+        return driver.findElement(chartTableLocator);
     }
 
     public WebElement getTabByName(String tabName) {
