@@ -3,6 +3,7 @@ package tests;
 import baseEntities.BaseTest;
 import configuration.ReadProperties;
 import models.User;
+import models.UserBuilder;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,15 +11,11 @@ public class LoginTest extends BaseTest {
 
 
     @Test
-    public void successLoginTest() {
-        User user = new User();
-        user.setEmail(ReadProperties.username());
-        user.setPsw(ReadProperties.password());
-
-        Assert.assertTrue(
-                loginStep.successLogin(user)
-                        .isPageOpened()
-        );
+    public void successLoginBuilderTest() {
+        UserBuilder user= new UserBuilder.Builder()
+                .withEmail("kllm")
+                .withPsw("j,")
+                .build();
     }
 
     @Test
