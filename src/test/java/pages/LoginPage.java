@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,5 +38,32 @@ public class LoginPage extends BasePage {
 
     public WebElement getErrorTextElement() {
         return waitsService.waitForExists(errorTextLocator);
+    }
+
+
+
+//блок комплексных методов
+    @Step("Успешный логин с {email}/{psw}")
+    public DashboardPage successLogin(String email, String psw) {
+        login(email, psw);
+
+        return new DashboardPage(driver);
+    }
+
+    @Step("Неудачный логин с {email}/{psw}")
+    public LoginPage incorrectLogin(String email, String psw) {
+        login(email, psw);
+
+        return this;
+    }
+
+    private void login(String email, String psw) {
+        getEmailInput().sendKeys(email);
+        getPswInput().sendKeys(psw);
+        getLogInButton().click();
+    }
+
+    public LoginPage logout() {
+        return this;
     }
 }
