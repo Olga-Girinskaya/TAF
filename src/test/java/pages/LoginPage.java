@@ -4,6 +4,8 @@ import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import wrappers.Button;
+import wrappers.UIElement;
 
 public class LoginPage extends BasePage {
     // Блок описания селекторов для элементов
@@ -23,8 +25,8 @@ public class LoginPage extends BasePage {
     }
 
     // Блок атомарных методов
-    public WebElement getEmailInput() {
-        return waitsService.waitForExists(emailInputLocator);
+    public UIElement getEmailInput() {
+        return new UIElement(driver, emailInputLocator);
     }
 
     public WebElement getPswInput() {
@@ -32,7 +34,7 @@ public class LoginPage extends BasePage {
     }
 
     public WebElement getLogInButton() {
-        return waitsService.waitForExists(logInButtonLocator);
+        return (WebElement) new Button(driver,logInButtonLocator);
     }
 
     public WebElement getErrorTextElement() {

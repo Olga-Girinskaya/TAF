@@ -29,7 +29,6 @@ public class BaseTest {
         mainProject = new Gson().fromJson(reader, Project.class);
     }
 
-
     @BeforeMethod
     public void setup() {
         driver = new BrowsersService().getDriver();
