@@ -43,7 +43,7 @@ public class WaitsService {
 
     public WebElement fluentWaitForElement(By locator) {
         Wait<WebDriver> fluent = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(30))  // максимальное время ожидпния
+                .withTimeout(Duration.ofSeconds(30))  // максимальное время ожидания
                 .pollingEvery(Duration.ofMillis(50))  //  периодичность с которым проверять условие (ищем элемент)
                 .ignoring(NoSuchElementException.class); // игнорирование этого исключения, можно было выбрать игнорировать все. но лучше так не делать
 
