@@ -7,13 +7,12 @@ import org.openqa.selenium.WebElement;
 
 public class ProjectsPage extends BasePage {
     //страница проекта "ProjectTest_Milestone"
-    private final static String pagePath = "/index.php?/projects/overview/4";
+    private final static String pagePath = "/index.php?/projects/overview/32";
 
     public SideMenuPage sideMenuPage;
 
     private final By headerTitleLabelLocator = By.cssSelector("#navigation-projects");
     private final String tabLocator = "//li/a[.='Replace']";
-
 
     public ProjectsPage(WebDriver driver) {
         super(driver);

@@ -17,26 +17,21 @@ public class MilestonesTest extends BaseTest {
         WaitsService wait = new WaitsService(driver, Duration.ofSeconds(5));
 
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
-        Assert.assertTrue(navigationStep.navigateToProjectsPage().isPageOpened()); //Открыта страница dashboard
-        Assert.assertTrue(navigationStep.openMilestonesPage().isPageOpened()); //Открыта страница с проектом на разделе Milestones
-        Assert.assertTrue(milestonesStep.addMilestoneButton().isPageOpened()); //По клику на кнопку "Add Milestone" страница Milestones открыта
-        Assert.assertTrue(milestonesStep.getPageIdentifier().isPageOpened()); //Открыта страница Milestone
-
+        navigationStep.navigateToProjectsPage();
+        navigationStep.openMilestonesPage();
+        milestonesStep.addMilestoneButton();
+        milestonesStep.getPageIdentifier();
         milestonesStep.createMilestone();
-        // проверка на содание
-        Assert.assertEquals(milestonesPage.getNameMilestone().getText(), milestonesStep.name, "Milestone не создана");
-        System.out.println("Milestone создан");
-
+        // проверка на создание
+        Assert.assertEquals(milestonesPage.getNameMilestone().getText(), milestonesStep.name, "Milestone не создан");
         milestonesStep.editMilestone();
         milestonesStep.updateMilestone();
 
-        milestonesStep.editMilestone();
         // проверка на редактирование и чтение
+        milestonesStep.editMilestone();
         Assert.assertEquals(milestonesPage.getReferencesMilestone().getAttribute("value"), milestonesStep.reference, "Reference не соответствует");
         Assert.assertEquals(milestonesPage.getDescriptionEditor().getText(), milestonesStep.description, "Description не соответствует");
         Assert.assertEquals(milestonesPage.getDateEndMilestone().getAttribute("value"), milestonesStep.date, "Дата окончания не соответствует");
-        System.out.println("Milestone прочитан");
-        System.out.println("Milestone изменен");
         milestonesStep.cancelMilestone();
 
         WebElement name = wait.waitForVisibility(milestonesPage.getNameMilestone());
@@ -44,7 +39,6 @@ public class MilestonesTest extends BaseTest {
         // проверка на удаление
         try {
             Assert.assertTrue(wait.waitForElementInvisible(name), "Milestone не удален");
-            System.out.println("Milestone удален");
         } catch (TimeoutException e) {
             Assert.fail("Milestone не удален");
         }

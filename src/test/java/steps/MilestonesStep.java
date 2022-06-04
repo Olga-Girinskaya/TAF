@@ -11,13 +11,11 @@ import java.time.Duration;
 
 public class MilestonesStep extends BaseStep {
     public SideMenuPage sideMenuPage;
-    private WaitsService waitsService = new WaitsService(driver, Duration.ofSeconds(ReadProperties.timeout()));
 
     public String name = "Test_Milestone";
     public String reference = "Test references";
     public String description = "Test description";
     public String date = "12/15/2021";
-
 
     public MilestonesStep(WebDriver driver) {
         super(driver);
