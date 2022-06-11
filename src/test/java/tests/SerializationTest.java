@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 
 public class SerializationTest {
 
-    //серрилизация
+    //сериализация
     @Test
     public void objectToJsonTest() throws IOException {
         Gson gson = new Gson();
@@ -27,7 +27,7 @@ public class SerializationTest {
         file.close();
     }
 
-    //десиреллизация
+    //десериализация
     @Test
     public void jsonToObjectTest() throws IOException {
         Gson gson= new Gson();
