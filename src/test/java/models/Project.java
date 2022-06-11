@@ -6,8 +6,8 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Project
-{
+public class Project {
+    public int id;
     private String name;
     private String announcement;
     private boolean isShowAnnouncement;
@@ -16,4 +16,13 @@ public class Project
     @SerializedName(value = "is_completed")
     private boolean isCompleted;
     private User user;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getProjectId() {
+        return id;
+    }
+
 }
