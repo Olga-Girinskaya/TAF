@@ -43,11 +43,9 @@ public class JsonToXml {
         JSONObject json = new JSONObject(jsonString);
         String xml = XML.toString(json);
         System.out.println(xml);
-
         //запись xml в файл
         FileWriter file = new FileWriter("xmlResult.xml");
         file.write(xml);
         file.close();
-
     }
 }

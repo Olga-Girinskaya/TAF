@@ -11,7 +11,6 @@ public class XmlToJson {
 
     @Test
     public void xmlToJsonJSONObject() throws IOException {
-
         String xmlString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<breakfast_menu>\n" +
                 "\t<food>\n" +
