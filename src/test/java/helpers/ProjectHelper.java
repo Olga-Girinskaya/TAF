@@ -5,6 +5,8 @@ import io.restassured.response.Response;
 import models.Project;
 import org.apache.http.HttpStatus;
 
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
 
 public class ProjectHelper {
@@ -26,5 +28,12 @@ public class ProjectHelper {
         return given()
                 .pathParam("project_id", project_id)
                 .get(Endpoints.GET_PROJECT);
+    }
+
+    public List<Project> getAllProjects() {
+        Response response = given()
+                .get(Endpoints.GET_PROJECTS);
+
+        return response.getBody().jsonPath().getList("projects", Project.class);
     }
 }

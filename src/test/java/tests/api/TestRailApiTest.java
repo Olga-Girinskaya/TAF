@@ -162,27 +162,26 @@ public class TestRailApiTest extends BaseApiTest {
     }
 
     @Test
-    public void getExactProject(){
+    public void getExactProject() {
         given()
                 .pathParam("project_id", 1)
                 .get(Endpoints.GET_PROJECT)
                 .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("id",is(1))
+                .body("id", is(1))
                 .body("name", equalTo("WP Test"));
     }
 
     @Test
-    public void getExactProjectAsObjectTest(){
+    public void getExactProjectAsObjectTest() {
         Response response = given()
                 .pathParam("project_id", 1)
                 .get(Endpoints.GET_PROJECT);
 
         Project actualProject = new Gson().fromJson(response.getBody().asString(), Project.class);
-
         Assert.assertEquals(actualProject.getName(), "WP Test");
-
     }
+
 
 }
