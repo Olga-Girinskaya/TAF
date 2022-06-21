@@ -1,6 +1,7 @@
 package tests.dbTest;
 
 import dbEntities.MilestonesTable;
+import helpers.ProjectHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterTest;
@@ -19,6 +20,7 @@ public class BaseDBMilestonesTest {
     @BeforeTest
     public void setupConnection() {
         dataBaseService = new DataBaseService();
+        ProjectHelper projectHelper= new ProjectHelper();
 
         milestonesTable = new MilestonesTable(dataBaseService);
         milestonesTable.dropMilestonesTable();
