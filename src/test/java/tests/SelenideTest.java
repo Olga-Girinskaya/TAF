@@ -52,7 +52,7 @@ public class SelenideTest {
         loginPage.password.setValue(ReadProperties.password()); // По умолчанию cssSelector
         loginPage.loginButton.click();
 
-        $(".page_title").shouldBe(visible).shouldHave(text("All Projects"));
+        $(".page_title").shouldBe(visible).shouldHave(text("All Projects1"));
     }
 
 }
