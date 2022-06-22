@@ -16,7 +16,7 @@ public class ProjectApiTest extends BaseApiTest {
     private int projectID=80;
 
     @Test
-    public int addProjectTest() {
+    public void addProjectTest() {
         Project project = Project.builder()
                 .name("Project_HW")
                 .typeOfProject(ProjectType.SINGLE_SUITE_BASELINES)
@@ -35,8 +35,6 @@ public class ProjectApiTest extends BaseApiTest {
                 .statusCode(HttpStatus.SC_OK)
                 .extract()
                 .as(Project.class);
-
-        return projectID = newProject.getId();
     }
 
     @Test
