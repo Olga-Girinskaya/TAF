@@ -3,9 +3,11 @@ package models;
 import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
 @Data
 @Builder
+@Getter
 public class Project {
     public int id;
     private String name;
@@ -16,13 +18,4 @@ public class Project {
     @SerializedName(value = "is_completed")
     private boolean isCompleted;
     private User user;
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getProjectId() {
-        return id;
-    }
-
 }

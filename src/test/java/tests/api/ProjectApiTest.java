@@ -1,7 +1,6 @@
 package tests.api;
 
 import configuration.Endpoints;
-import io.restassured.response.Response;
 import models.Project;
 import models.ProjectType;
 import org.apache.http.HttpStatus;
@@ -12,10 +11,12 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class CRUDProjectTest extends BaseApiTest {
+public class ProjectApiTest extends BaseApiTest {
 
-    @Test(priority = 1)
-    public void addProjectTest() {
+    private int projectID=80;
+
+    @Test
+    public int addProjectTest() {
         Project project = Project.builder()
                 .name("Project_HW")
                 .typeOfProject(ProjectType.SINGLE_SUITE_BASELINES)
@@ -35,29 +36,54 @@ public class CRUDProjectTest extends BaseApiTest {
                 .extract()
                 .as(Project.class);
 
-        System.out.println(newProject.toString());
+        return projectID = newProject.getId();
     }
 
-    @Test(priority = 2)
+    @Test
     public void getProjectTest() {
         given()
                 .when()
-                .get(Endpoints.GET_PROJECTS)
+                .pathParams("project_id",projectID)
+                .get(Endpoints.GET_PROJECT)
+                .then()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .as(Project.class);
+    }
+
+    @Test
+    public void updateProjectTest() {
+        Project project = Project.builder()
+                .announcement("hfjgvjkghjjjjj")
+                .build();
+
+        Map<String, Object> jsonAsMap = new HashMap<>();
+        jsonAsMap.put("announcement", project.getAnnouncement());
+
+         given()
+                .body(jsonAsMap)
+                .when()
+                .pathParams("project_id",projectID)
+                .post(Endpoints.UPDATE_PROJECT)
                 .then()
                 .log().body()
                 .statusCode(HttpStatus.SC_OK)
                 .extract()
                 .as(Project.class);
 
-        //System.out.println(project.toString());
     }
 
-    @Test(priority = 3)
-    public void updateProjectTest(int project_id) {
-
-    }
-
-    @Test(priority = 4)
+    @Test
     public void deleteProjectTest() {
+        given()
+                .when()
+                .pathParams("project_id",projectID)
+                .post(Endpoints.DElETE_PROJECT)
+                .then()
+                .statusCode(HttpStatus.SC_OK)
+                .log().body();
     }
+
+
 }
