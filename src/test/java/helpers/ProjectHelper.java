@@ -40,27 +40,14 @@ public class ProjectHelper {
         return response.getBody().jsonPath().getList("projects", Project.class);
     }
 
-    public void addProject() {
-        Project project = Project.builder()
-                .name("Project_HW")
-                .typeOfProject(ProjectType.SINGLE_SUITE_BASELINES)
-                .build();
+    public Project addProject(Map<String, Object> jsonAsMap){
 
-        Map<String, Object> jsonAsMap = new HashMap<>();
-        jsonAsMap.put("name", project.getName());
-        jsonAsMap.put("suite_mode", project.getTypeOfProject());
-
-        Project newProject = given()
+        return given()
                 .body(jsonAsMap)
-                .when()
                 .post(Endpoints.ADD_PROJECT)
                 .then()
-                .log().body()
                 .statusCode(HttpStatus.SC_OK)
                 .extract()
                 .as(Project.class);
-
-        System.out.println(newProject.toString());
     }
-
 }

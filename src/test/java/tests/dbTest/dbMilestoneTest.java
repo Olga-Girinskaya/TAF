@@ -15,7 +15,7 @@ public class dbMilestoneTest extends BaseDBMilestonesTest {
 
         try {
             while (rs.next()) {
-                String id = rs.getString("ID");
+                String milestoneId = rs.getString("ID");
                 int projectId = rs.getInt("projectId");
                 String name = rs.getString("name");
                 String description = rs.getString("description");
@@ -24,7 +24,7 @@ public class dbMilestoneTest extends BaseDBMilestonesTest {
                 String endDate = rs.getString("endDate");
                 int parentId = rs.getInt("parentId");
 
-                logger.info("id: " + id);
+                logger.info("id: " + milestoneId);
                 logger.info("projectId: " + projectId);
                 logger.info("name: " + name);
                 logger.info("description: " + description);
