@@ -69,7 +69,6 @@ public class ProjectApiTest extends BaseApiTest {
                 .statusCode(HttpStatus.SC_OK)
                 .extract()
                 .as(Project.class);
-
     }
 
     @Test
@@ -82,6 +81,4 @@ public class ProjectApiTest extends BaseApiTest {
                 .statusCode(HttpStatus.SC_OK)
                 .log().body();
     }
-
-
 }

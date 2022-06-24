@@ -23,6 +23,7 @@ public class ProjectHelper {
                 .as(Project.class);
     }
 
+    //получим респонс
     public Response getProjectResponse(int project_id) {
         return given()
                 .pathParam("project_id", project_id)
@@ -35,5 +36,4 @@ public class ProjectHelper {
 
         return response.getBody().jsonPath().getList("projects", Project.class);
     }
-
 }
