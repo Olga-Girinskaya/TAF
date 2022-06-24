@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 public class BaseApiTest {
 
     @BeforeTest
-    public void setupEnv(){
+    public void setupEnv() {
         RestAssured.baseURI = ReadProperties.getUrl();
 
         RestAssured.requestSpecification = given()

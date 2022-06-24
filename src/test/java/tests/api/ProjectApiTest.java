@@ -77,7 +77,7 @@ public class ProjectApiTest extends BaseApiTest {
         given()
                 .when()
                 .pathParams("project_id",projectID)
-                .post(Endpoints.DElETE_PROJECT)
+                .post(Endpoints.DELETE_PROJECT)
                 .then()
                 .statusCode(HttpStatus.SC_OK)
                 .log().body();

@@ -1,8 +1,10 @@
 package tests.api;
 
 import configuration.Endpoints;
+import helpers.MilestoneHelper;
 import models.Milestone;
 import org.apache.http.HttpStatus;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -12,48 +14,34 @@ import static io.restassured.RestAssured.given;
 
 public class MilestoneApiTest extends BaseApiTest {
 
-    private int milestoneID = 169;
-    private int projectID = 80;
+    public MilestoneHelper milestoneHelper;
+    public Milestone milestone;
 
     @Test
     public void addMilestoneTest() {
-        Milestone milestone = Milestone.builder()
-                .name("Milestone_1")
-                .description("Description...")
-                .build();
+        milestoneHelper = new MilestoneHelper();
 
         Map<String, Object> jsonAsMap = new HashMap<>();
-        jsonAsMap.put("name", milestone.getName());
-        jsonAsMap.put("description", milestone.getDescription());
+        jsonAsMap.put("name", "Milestone_1");
+        jsonAsMap.put("description", "Description...");
+        milestone = milestoneHelper.addMilestone(jsonAsMap);
 
-        given()
-                .body(jsonAsMap)
-                .when()
-                .pathParams("project_id", projectID)
-                .post(Endpoints.ADD_MILESTONE)
-                .then()
-                .log().body()
-                .statusCode(HttpStatus.SC_OK)
-                .extract()
-                .as(Milestone.class);
-
+        Assert.assertEquals(milestone.getName(), jsonAsMap.get("name"));
+        Assert.assertEquals(milestone.getDescription(), jsonAsMap.get("description"));
     }
 
     @Test(dependsOnMethods = "addMilestoneTest")
     public void updateMilestoneTest() {
-        Milestone milestone = Milestone.builder()
-                .name("Milestone_5")
-                .description("Test description...")
-                .build();
+        milestoneHelper = new MilestoneHelper();
 
         Map<String, Object> jsonAsMap = new HashMap<>();
-        jsonAsMap.put("name", milestone.getName());
-        jsonAsMap.put("description", milestone.getDescription());
+        jsonAsMap.put("name", "Milestone_5");
+        jsonAsMap.put("description", "Test description...");
 
         given()
                 .body(jsonAsMap)
                 .when()
-                .pathParams("milestone_id", milestoneID)
+                .pathParams("milestone_id", milestone.getId())
                 .post(Endpoints.UPDATE_MILESTONE)
                 .then()
                 .log().body()
@@ -64,21 +52,24 @@ public class MilestoneApiTest extends BaseApiTest {
 
     @Test(dependsOnMethods = "updateMilestoneTest")
     public void getMilestoneTest() {
+        milestoneHelper = new MilestoneHelper();
+
         given()
                 .when()
-                .pathParams("milestone_id", milestoneID)
+                .pathParams("milestone_id", milestone.getId())
                 .get(Endpoints.GET_MILESTONE)
                 .then()
                 .log().body()
                 .statusCode(HttpStatus.SC_OK);
     }
 
-
     @Test(dependsOnMethods = "getMilestoneTest")
     public void deleteMilestoneTest() {
+        milestoneHelper = new MilestoneHelper();
+
         given()
                 .when()
-                .pathParams("milestone_id", milestoneID)
+                .pathParams("milestone_id", milestone.getId())
                 .post(Endpoints.DELETE_MILESTONE)
                 .then()
                 .statusCode(HttpStatus.SC_OK)
@@ -87,12 +78,6 @@ public class MilestoneApiTest extends BaseApiTest {
 
     @Test(dependsOnMethods = "deleteMilestoneTest")
     public void getMilestonesTest() {
-        given()
-                .when()
-                .pathParams("project_id", projectID)
-                .get(Endpoints.GET_MILESTONES)
-                .then()
-                .log().body()
-                .statusCode(HttpStatus.SC_OK);
+        milestoneHelper.getMilestones();
     }
 }

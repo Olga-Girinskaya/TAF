@@ -9,7 +9,7 @@ import lombok.Getter;
 @Builder
 @Getter
 public class Project {
-    public int id;
+    public int projectId;
     private String name;
     private String announcement;
     private boolean isShowAnnouncement;

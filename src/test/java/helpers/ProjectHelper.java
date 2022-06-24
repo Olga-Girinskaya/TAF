@@ -3,12 +3,9 @@ package helpers;
 import configuration.Endpoints;
 import io.restassured.response.Response;
 import models.Project;
-import models.ProjectType;
 import org.apache.http.HttpStatus;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
@@ -38,4 +35,5 @@ public class ProjectHelper {
 
         return response.getBody().jsonPath().getList("projects", Project.class);
     }
+
 }
