@@ -41,7 +41,6 @@ public class ProjectHelper {
     }
 
     public Project addProject(Map<String, Object> jsonAsMap){
-
         return given()
                 .body(jsonAsMap)
                 .post(Endpoints.ADD_PROJECT)
@@ -49,5 +48,13 @@ public class ProjectHelper {
                 .statusCode(HttpStatus.SC_OK)
                 .extract()
                 .as(Project.class);
+    }
+
+    public void deleteProject(int projectId) {
+        given()
+                .pathParam("project_id", projectId)
+                .post(Endpoints.DELETE_PROJECT)
+                .then()
+                .statusCode(HttpStatus.SC_OK);
     }
 }
