@@ -1,13 +1,11 @@
 package models;
 
 import com.google.gson.annotations.SerializedName;
-import groovy.transform.EqualsAndHashCode;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-//@EqualsAndHashCode
 public class Milestone {
     @SerializedName("id")
     private int milestoneId;
