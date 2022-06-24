@@ -183,5 +183,4 @@ public class TestRailApiTest extends BaseApiTest {
         Assert.assertEquals(actualProject.getName(), "WP Test");
     }
 
-
 }

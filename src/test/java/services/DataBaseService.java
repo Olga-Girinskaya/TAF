@@ -34,7 +34,7 @@ public class DataBaseService {
         }
 
         if (connection != null) {
-            logger.info("You successfully connected to database.");
+            logger.info("Успешное подключиение к базе данных");
         } else {
             logger.info("Что-то пошло не так");
         }

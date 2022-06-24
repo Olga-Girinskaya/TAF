@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Builder
-@EqualsAndHashCode
+//@EqualsAndHashCode
 public class Milestone {
     @SerializedName("id")
     private int milestoneId;

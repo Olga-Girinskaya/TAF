@@ -36,23 +36,23 @@ public class BaseDBMilestonesTest extends BaseApiTest {
         jsonAsMap.put("name", "Project_Test");
         jsonAsMap.put("suite_mode", ProjectType.SINGLE_SUITE_MODE);
         project = projectHelper.addProject(jsonAsMap);
-        logger.info("Проект создан");
+        logger.info("Проект создан!!!");
 
         milestonesTable = new MilestonesTable(dataBaseService);
         milestonesTable.dropMilestonesTable();
-        logger.info("Таблица milestone удалена");
+        logger.info("Таблица milestone удалена!!!");
         milestonesTable.createMilestonesTable();
-        logger.info("Таблица milestone создана");
+        logger.info("Таблица milestone создана!!!");
 
         milestonesTable.addMilestones(project.projectId, "Milestone_1", "Test Milestone_1", false, null, null, 0);
         milestonesTable.addMilestones(project.projectId, "Milestone_2", "Test Milestone_2", true, null, null, 0);
-        logger.info("Таблица milestone заполнена");
+        logger.info("Таблица milestone заполнена!!!");
     }
 
-@AfterMethod
+    @AfterMethod
     public void deleteBaseTestProject() {
         projectHelper.deleteProject(project.projectId);
-        logger.info("Удаление проекта");
+        logger.info("Проект удален!!!");
     }
 
     @AfterTest
