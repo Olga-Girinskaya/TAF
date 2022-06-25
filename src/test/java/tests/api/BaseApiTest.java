@@ -12,7 +12,6 @@ import org.testng.annotations.BeforeTest;
 import static io.restassured.RestAssured.given;
 
 public class BaseApiTest {
-    public Project expectedProject;
     public ProjectHelper projectHelper;
 
     @BeforeTest
@@ -22,11 +21,6 @@ public class BaseApiTest {
         RestAssured.requestSpecification = given()
                 .header(HTTP.CONTENT_TYPE, ContentType.JSON)
                 .auth().preemptive().basic(ReadProperties.username(), ReadProperties.password());
-
-        expectedProject = Project.builder()
-                .name("WP_Test_03")
-                .typeOfProject(ProjectType.MULTIPLE_SUITE_MODE)
-                .build();
 
         projectHelper = new ProjectHelper();
     }
