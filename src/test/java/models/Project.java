@@ -3,11 +3,13 @@ package models;
 import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
 @Data
 @Builder
-public class Project
-{
+@Getter
+public class Project {
+    public int projectId;
     private String name;
     private String announcement;
     private boolean isShowAnnouncement;
