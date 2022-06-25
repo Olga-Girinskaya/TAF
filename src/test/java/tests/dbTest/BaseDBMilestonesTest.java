@@ -50,7 +50,7 @@ public class BaseDBMilestonesTest extends BaseApiTest {
     }
 
     @AfterMethod
-    public void deleteBaseTestProject() {
+    public void deleteTestProject() {
         projectHelper.deleteProject(project.projectId);
         logger.info("Проект удален!!!");
     }

@@ -45,7 +45,8 @@ public class dbMilestoneTest extends BaseDBMilestonesTest {
                         .post(Endpoints.ADD_MILESTONE)
                         .then()
                         .statusCode(HttpStatus.SC_OK)
-                        .extract().as(Milestone.class);
+                        .extract()
+                        .as(Milestone.class);
                 logger.info("Milestone создан");
 
                 Assert.assertEquals(milestone.getProjectId(), jsonAsMap.get("project_id"));
