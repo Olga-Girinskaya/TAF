@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 
 public class ProjectApiTest extends BaseApiTest {
 
-    private int projectID=138;
+    private int projectID=2;
 
     @Test
     public void addProjectTest() {
