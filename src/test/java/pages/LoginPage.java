@@ -37,6 +37,11 @@ public class LoginPage extends BasePage {
         return (WebElement) new Button(driver,logInButtonLocator);
     }
 
+    public Button getLogInButton2() {
+        return new Button(driver, logInButtonLocator);
+    }
+
+
     public WebElement getErrorTextElement() {
         return waitsService.waitForExists(errorTextLocator);
     }
