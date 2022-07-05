@@ -1,32 +1,85 @@
 package tests.api;
 
-import helpers.ProjectHelper;
+import configuration.Endpoints;
 import models.Project;
+import models.ProjectType;
 import org.apache.http.HttpStatus;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static io.restassured.RestAssured.given;
 
 public class ProjectApiTest extends BaseApiTest {
 
+    private int projectID=2;
+
     @Test
-    public void positiveTest() {
-        Project expectedProject = Project.builder()
-                .typeOfProject(1)
-                .name("WP Test")
-                .announcement("Test An")
+    public void addProjectTest() {
+        Project project = Project.builder()
+                .name("Project_HW")
+                .typeOfProject(ProjectType.SINGLE_SUITE_BASELINES)
                 .build();
 
-        Assert.assertTrue(projectHelper.getProject(1).equals(expectedProject));
+        Map<String, Object> jsonAsMap = new HashMap<>();
+        jsonAsMap.put("name", project.getName());
+        jsonAsMap.put("suite_mode", project.getTypeOfProject());
+
+        given()
+                .body(jsonAsMap)
+                .when()
+                .post(Endpoints.ADD_PROJECT)
+                .then()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .as(Project.class);
     }
 
-    @Test
-    public void negativeInvalidProjectTest() {
-        Assert.assertEquals(projectHelper.getProjectResponse(500).getStatusCode(), HttpStatus.SC_BAD_REQUEST);
+    @Test (dependsOnMethods = "addProjectTest")
+    public void getProjectTest() {
+        given()
+                .when()
+                .pathParams("project_id",projectID)
+                .get(Endpoints.GET_PROJECT)
+                .then()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .as(Project.class);
     }
 
-    @Test
-    public void positiveCountProjectsTest() {
-       // Assert.assertEquals(projectHelper.getAllProjects().size(), 67);
-        Assert.assertEquals(projectHelper.getAllProjects().get(0).getName(), "WP Test");
+    @Test (dependsOnMethods = "getProjectTest")
+    public void updateProjectTest() {
+        Project project = Project.builder()
+                .announcement("hfjgvjkghjjjjj")
+                .build();
+
+        Map<String, Object> jsonAsMap = new HashMap<>();
+        jsonAsMap.put("announcement", project.getAnnouncement());
+
+         given()
+                .body(jsonAsMap)
+                .when()
+                .pathParams("project_id",projectID)
+                .post(Endpoints.UPDATE_PROJECT)
+                .then()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .as(Project.class);
+
+    }
+
+    @Test (dependsOnMethods = "updateProjectTest")
+    public void deleteProjectTest() {
+        given()
+                .when()
+                .pathParams("project_id",projectID)
+                .post(Endpoints.DELETE_PROJECT)
+                .then()
+                .statusCode(HttpStatus.SC_OK)
+                .log().body();
     }
 }
